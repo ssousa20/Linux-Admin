@@ -1,21 +1,28 @@
 #!/bin/bash
-#OCT 15 2020
+#Oct 15 2020
+#
+#
 #This script is desinged to give the user a consolidated reference point of network information including IP addresses, DNS, and open ports. It is designed with flexibility of use in mind and can be run at any time. The date and time of execution identifies the file.
 #
 #It is necessary to creat a directory named netinfo in the users account directory. This will be the directory used to store all network information dumps. 
 #This script is designed to be run from the users account directory.
 #
-#Netstat -tuplen is used to determine which ports are open. -t gives TCP, -u returns UDP, -p returns programs, -l returns whats listening, -e returns inodes and gives extended information, and -n returns user identification information
 #
-#ip addr returns the the IP address and network configuration
-#
-#grep "nameserver" /etc/resolv.conf searches the resolv.conf file for the line with the string "nameserver" and returns that line. This shows us the DNS.
 #
 #
 #
 ######     User must have sudo permissions    ######
 
-
-(netstat -tuplen; ip addr; grep "nameserver" /etc/resolv.conf)> ./netinfo/"dump-$(date +'%H:%M-%F')"
+#Netstat -tuplen is used to determine which ports are open. -t gives TCP, -u returns UDP, -p returns programs, -l returns whats listening, -e returns inodes and gives extended information, and -n returns user identification information
+#
+(netstat -tuplen; 
+#
+#####ip addr returns the the IP address and network configuration
+#
+ip addr; 
+#
+####grep "nameserver" /etc/resolv.conf searches the resolv.conf file for the line with the string "nameserver" and returns that line. This shows us the DNS.
+#
+grep "nameserver" /etc/resolv.conf)> ./netinfo/"dump-$(date +'%H:%M-%F')"
 
  

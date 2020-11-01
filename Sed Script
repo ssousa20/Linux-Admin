@@ -1,0 +1,14 @@
+#/bin/bash/
+#
+#To run enter the script including its path and the file you want to use
+#example: ./sed datebook
+sed -e '
+#Inserts - PERSONNEL FILE - above the first line
+1i\ - PERSONNEL FILE -
+#Removes salaries ending in 600
+/600$/d
+#Prints the contents of the file with the last names and first names reversed 
+s/\([[:alpha:]]\+\) \([[:alpha:]]\+\)/\2 \1/
+#Appends THE END to the end of the file.
+$a\ THE END
+' "$@" 

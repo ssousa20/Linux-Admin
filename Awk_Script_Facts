@@ -1,0 +1,9 @@
+#!/usr/bin/awk -f
+BEGIN {FS=":"}
+#This prints names and phone numbers for the savages
+$1~/Savage/ {print$1,$2}
+#This prints Chets contributions
+$1~/Chet/ {print$1,$3,$4,$5}
+#This prints all those who contributed $250 the first month
+$3~/250/ {print $1}
+
